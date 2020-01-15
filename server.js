@@ -27,27 +27,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const database = {
-    users: [
-        {
-            id: '123',
-            name: 'Ben',
-            email: 'ben@ben.com',
-            password: 'ben',
-            entries: 0,
-            joined: new Date(),
-        }, 
-        {
-            id: '234',
-            name: 'Laura',
-            email: 'laura@laura.com',
-            password: 'laura',
-            entries: 0,
-            joined: new Date(),
-        }
-    ]
-}
-
 app.get('/', (req, res) => { res.send(database.users) })
 app.post('/signin', (req, res) => { signin.handleSignin(req, res, db, bcrypt) })
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
