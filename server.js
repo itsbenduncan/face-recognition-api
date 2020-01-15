@@ -10,12 +10,11 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
 const db = knex({
-    client: 'pg',
-    connection: {
-      connectionString : process.env.DATABASE_URL,
-      ssl: true,
-    }
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
   });
+
+db.connect();
 
 db.select('*').from('users').then*(data => {
     console.log(data);
